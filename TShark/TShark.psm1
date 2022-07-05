@@ -367,4 +367,25 @@ in Wireshark
 #>
 }
 
+Function Install-TShark {
+if (Test-Path "$env:USERPROFILE\scoop")
+{
+    Write-Host -ForegroundColor Yellow "Awesome it looks like you have scoop installed, checking to see if TShark present."
+    if (Test-Path "$env:USERPROFILE\scoop\shims\tshark.exe")
+    {
+    Write-Host -ForegroundColor Yellow "It appears you have TShark installed you are all good to use Start-TShark now"
+    }
+    else {
+    scoop install wireshark
+    }
+}
+else
+{
+Write-Host -ForegroundColor Yellow "I am now installing scoop for you and TShark, then you can use Start-TShark once complete."
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+scoop bucket add extras
+scoop install wireshark
+Write-Host -ForegroundColor Yellow "All done have a great day."
+}
 
+}
