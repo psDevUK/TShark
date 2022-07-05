@@ -6,17 +6,26 @@ PowerShell Crescendo module for TShark command line of Wireshark.
 
 # Installation 
 
-This module does not include the commands that it wraps. You can install them with scoop or Chocolatey.
+This module does not include the commands that it wraps. You can install them with scoop or Chocolatey. Or if you don't want you copy and paste, I did include a function 
+
+```powershell
+Install-TShark
+```
+Which will check if scoop present if not will install scoop and wireshark, if scoop is installed it will just install wireshark, if you don't already have it installed
+
+# Manual Install from scoop
 
 ```powershell
 Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 scoop bucket add extras
 scoop install wireshark
 ```
+# Manual Install from Chocolatey
 
 ```powershell
 choco install wireshark
 ```
+# Install this module from PSGallery, or take a fork
 
 To install this module: 
 
